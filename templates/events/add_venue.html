@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<center>
+<h1>
+    Add Venue
+</h1>
+<br/>
+    {% if submitted %}
+         Your venue was submitted successfully!
+        <div>
+            <a href="{%  url 'list-venues' %}" class="btn btn-primary"> SEE VENUES</a>
+        </div>
+    {% else %}
+        <form action="" method=POST>
+            {% csrf_token %}
+              {{ form.as_p }}
+            <input type="submit" value="Submit" class="btn btn-secondary">
+             <a href="{%  url 'list-venues' %}" class="btn btn-primary">Come back</a>
+
+        </form>
+    {% endif %}
+</center>
+
+{% endblock %}

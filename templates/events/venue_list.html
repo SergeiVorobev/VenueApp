@@ -1,0 +1,30 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h1 align="center">Venues</h1>
+        <br/>
+{#    <div style="align-content: center">#}
+    <form class="form-inline my-2 my-lg-0" method= POST action="{% url 'search-venues' %}">
+        {% csrf_token %}
+
+      <input class="form-control mr-sm-2" type="search" placeholder="Venue" aria-label="Search" name="searched">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+
+    </form>
+    <br/>
+{#    </div>#}
+    <table class="table table-hover table-bordered">
+        {% for venue in venue_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br/>
+    <a href="{%  url 'add-venue' %}" class="btn btn-primary">ADD VENUE</a>
+{% endblock %}
+{#    </div>#}
+{##}
+</center>

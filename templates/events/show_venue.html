@@ -1,0 +1,31 @@
+
+{% extends 'events/base.html' %}
+
+{% block content %}
+     <div class="card">
+          <h5 class="card-header"> <strong>{{venue}}</strong></h5>
+          <div class="card-body">
+            <h5 class="card-title"><tt>Details</tt></h5>
+            <div>
+                <ul>
+                    <li>Address: {{ venue.address}}</li>
+                    <li>Post code: {{ venue.post_code}}</li>
+                    <li>Contact phone: {{ venue.phone}}</li>
+                    <li>Website: <a href="{{ venue.web }}"> {{ venue.web}}</a></li>
+                    <li>Email: {{ venue.email}}</li>
+                    <li>Description: {{ venue.ven_description}}</li>
+                    <li>Open hours: {{ venue.from_hour}} - {{ venue.to_hour }}</li>
+                    <li>Area size (mxm): {{ venue.flour_size}}</li>
+                    <li>Ranking: {{ venue.booking_rates}}</li>
+                 </ul>
+
+            </div>
+          </div>
+        </div>
+    <br/>    <br/>
+
+     <a href="{%  url 'list-venues' %}" class="btn btn-primary" >COME Back</a>
+
+</center>
+
+{% endblock %}
