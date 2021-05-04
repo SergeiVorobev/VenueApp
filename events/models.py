@@ -32,7 +32,6 @@ class Event(models.Model):
     event_date = models.DateField('Event Date')
     start_time = models.TimeField()
     end_time = models.TimeField()
-    # manager = models.CharField('Manager', max_length=60)
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     man_phone = models.CharField('Manager Phone', max_length=15)
     eve_description = models.TextField('Description', blank=True)

@@ -6,19 +6,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-{#      <li class="nav-item active">#}
-{#        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
-{#      </li>#}
-{#      <li class="nav-item">#}
-{#        <a class="nav-link" href="{% url 'home' '2021' 'March' %}">March</a>#}
-{#      </li>#}
         <li class="nav-item active">
         <a class="nav-link" href="{% url 'list-events' %}">Events</a>
-      </li>
         </li>
         <li class="nav-item active">
         <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
-      </li>
+        </li>
     </ul>
 {#    <form class="form-inline my-2 my-lg-0" method= POST action="search_venues.html">#}
 {#      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}

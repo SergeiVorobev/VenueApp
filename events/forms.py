@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Venue
+from .models import Venue, Event
 
 # Create a venue form
 class VenueForm(ModelForm):
@@ -24,3 +24,25 @@ class VenueForm(ModelForm):
             'from_hour': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Open time'}),
             'to_hour': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Close time'}),
             'flour_size': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Square size (m^2)'})}
+
+
+# Create a event form
+class EventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ('name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'eve_description', 'venue', 'attendees')
+
+        labels = {
+            'name': '', 'event_date': '', 'start_time': '', 'end_time': '', 'manager': '', 'man_phone': '', 'eve_description': '', 'venue': '', 'attendees': '',
+        }
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event name'}),
+            'event_date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
+            'start_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Start time'}),
+            'end_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'End time'}),
+            'manager': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Manager'}),
+            'man_phone': forms.EmailInput(attrs={'class': 'form-control', ' placeholder': 'Manager phone'}),
+            'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
+            'venue': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Venue'}),
+            'attendees': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
+        }

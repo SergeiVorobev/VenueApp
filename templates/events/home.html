@@ -2,17 +2,19 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
-<center>
+<div style="text-align: center;">
     <h1> Hello friend!</h1>
-    <br/>
+    <br/> <br/>
+</div>
     <h2> Calendar for {{ month }} {{ year }}</h2>
+    <br/>
 {#    <h1>Hello {{ name }}! Events For#}
 {#    {{ month }} {{ year }} </h1>#}
-
+<div style="text-align: center;">
     {{ cal|safe }}
     <br/>
-    Current time: {{ time }} <br/><br/>
+    Current time: {{ time }} <br/><br/><br/>
 
     Copyright (c) {{ current_year }}
-</center>
+</div>
 {% endblock %}

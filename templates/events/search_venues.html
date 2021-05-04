@@ -2,7 +2,7 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
-<center>
+<div style="text-align: center;">
     {% if searched %}
          <h1>You Searched for '{{ searched }}' </h1>
         <br/>
@@ -14,6 +14,5 @@
         <h1>You forgot to search a venue</h1>
     {% endif %}
 
-
-</center>
+</div>
 {% endblock %}

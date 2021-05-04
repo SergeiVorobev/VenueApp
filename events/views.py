@@ -3,7 +3,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Event, Venue
-from .forms import VenueForm
+from .forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
@@ -48,6 +48,12 @@ def show_venue(request, venue_id):
                       "venue": venue,
                   })
 
+def show_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    return render(request, 'events/show_event.html', {
+                      "event": event,
+                  })
+
 def add_venue(request):
     submitted = False
     if request.method == "POST":
@@ -62,6 +68,20 @@ def add_venue(request):
 
     return render(request, 'events/add_venue.html', {'form': form, 'submitted': submitted})
 
+def add_event(request):
+    submitted = False
+    if request.method == "POST":
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/events/add_event?submitted=True')
+    else:
+        form = EventForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'events/add_event.html', {'form': form, 'submitted': submitted})
+
 def search_venues(request):
     if request.method == 'POST':
         searched = request.POST['searched']
@@ -69,5 +89,13 @@ def search_venues(request):
         return render(request, 'events/search_venues.html', {'searched': searched, 'venues': venues})
     else:
         return render(request, 'events/search_venues.html', {})
+
+def search_events(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        events = Event.objects.filter(name__contains=searched)
+        return render(request, 'events/search_events.html', {'searched': searched, 'events': events})
+    else:
+        return render(request, 'events/search_events.html', {})
 
 

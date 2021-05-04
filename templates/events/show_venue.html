@@ -5,7 +5,7 @@
      <div class="card">
           <h5 class="card-header"> <strong>{{venue}}</strong></h5>
           <div class="card-body">
-            <h5 class="card-title"><tt>Details</tt></h5>
+            <h5 class="card-title">Details</h5>
             <div>
                 <ul>
                     <li>Address: {{ venue.address}}</li>
@@ -18,14 +18,11 @@
                     <li>Area size (mxm): {{ venue.flour_size}}</li>
                     <li>Ranking: {{ venue.booking_rates}}</li>
                  </ul>
-
-            </div>
           </div>
         </div>
+     </div>
     <br/>    <br/>
 
      <a href="{%  url 'list-venues' %}" class="btn btn-primary" >COME Back</a>
-
-</center>
 
 {% endblock %}
