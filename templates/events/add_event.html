@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div style="text-align: center;">
+<h1>
+    Add Event
+</h1>
+<br/>
+    {% if submitted %}
+         Your venue was submitted successfully!
+        <div>
+            <a href="{%  url 'list-events' %}" class="btn btn-primary"> SEE EVENTS</a>
+        </div>
+    {% else %}
+        <form action="" method=POST>
+            {% csrf_token %}
+              {{ form.as_p }}
+            <input type="submit" value="Submit" class="btn btn-secondary">
+             <a href="{%  url 'list-events' %}" class="btn btn-primary">Come back</a>
+
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}
