@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
@@ -98,4 +98,21 @@ def search_events(request):
     else:
         return render(request, 'events/search_events.html', {})
 
+def edit_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    form = VenueForm(request.POST or None, instance=venue)
+    if form.is_valid():
+        form.save()
+        return redirect('show-venue', venue_id)
+
+    return render(request, 'events/edit_venue.html', {'venue': venue,'form': form})
+
+def edit_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    form = EventForm(request.POST or None, instance=event)
+    if form.is_valid():
+        form.save()
+        return redirect('show-event', event_id)
+
+    return render(request, 'events/edit_event.html', {'event': event,'form': form})
 

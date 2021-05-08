@@ -25,7 +25,6 @@ class VenueForm(ModelForm):
             'to_hour': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Close time'}),
             'flour_size': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Square size (m^2)'})}
 
-
 # Create a event form
 class EventForm(ModelForm):
     class Meta:
@@ -37,12 +36,12 @@ class EventForm(ModelForm):
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event name'}),
+            'venue': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Venue'}),
             'event_date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
             'start_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Start time'}),
             'end_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'End time'}),
-            'manager': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Manager'}),
-            'man_phone': forms.EmailInput(attrs={'class': 'form-control', ' placeholder': 'Manager phone'}),
+            'manager': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Manager'}),
+            'man_phone': forms.TextInput(attrs={'class': 'form-control', ' placeholder': 'Manager phone'}),
             'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
-            'venue': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Venue'}),
-            'attendees': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
+            'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
         }
