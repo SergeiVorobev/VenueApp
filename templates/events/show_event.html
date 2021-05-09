@@ -1,4 +1,4 @@
-{ % extends 'events/base.html' %}
+{% extends 'events/base.html' %}
 
 {% block content %}
      <div class="card">
@@ -28,7 +28,15 @@
         </div>
     <br/>    <br/>
 
-     <a href="{%  url 'list-events' %}" class="btn btn-primary" >COME Back</a>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+         <a href="{%  url 'list-events' %}" class="btn btn-primary" >COME BACK</a>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+         <a href="{%  url 'edit-event' event.id %}" class="btn btn-primary">EDIT EVENT</a>
+      </div>
+    </div>
+
 
 
 {% endblock %}
