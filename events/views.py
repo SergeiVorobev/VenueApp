@@ -3,8 +3,10 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Event, Venue
-from .forms import VenueForm, EventForm
+from .forms import VenueForm, EventForm, CreateUser
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     # name = "John"
@@ -116,3 +118,27 @@ def edit_event(request, event_id):
 
     return render(request, 'events/edit_event.html', {'event': event,'form': form})
 
+def del_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    event.delete()
+    return redirect('list-events')
+
+def del_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    venue.delete()
+    return redirect('list-venues')
+
+def registration(request):
+    form = CreateUser()
+
+    if request.method=='POST':
+        form = CreateUser(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form': form}
+    return render(request, 'events/registration.html', context)
+
+def login(request):
+    context = {}
+    return render(request, 'events/login.html', context)

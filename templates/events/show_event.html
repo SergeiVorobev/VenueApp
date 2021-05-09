@@ -30,10 +30,13 @@
 
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">
-         <a href="{%  url 'list-events' %}" class="btn btn-primary" >COME BACK</a>
+         <a href="{%  url 'list-events' %}" class="btn btn-secondary" >COME BACK</a>
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Second group">
          <a href="{%  url 'edit-event' event.id %}" class="btn btn-primary">EDIT EVENT</a>
+      </div>
+     <div class="btn-group mr-2" role="group" aria-label="Third group">
+         <a href="{%  url 'del-event' event.id %}" class="btn btn-danger">DELETE EVENT</a>
       </div>
     </div>
 

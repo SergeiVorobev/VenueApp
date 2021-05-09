@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns =[
+     path('register/', views.registration, name="registration"),
+     path('login', views.login, name="login"),
      path('', views.home, name="home"),
      path('<int:year>/<str:month>/', views.home, name="home"),
      path('events/', views.all_events, name="list-events"),
@@ -14,5 +16,6 @@ urlpatterns =[
      path('search_events/', views.search_events, name='search-events'),
      path('edit_event/<event_id>', views.edit_event, name="edit-event"),
      path('edit_venue/<venue_id>', views.edit_venue, name="edit-venue"),
-
+     path('del_event/<event_id>', views.del_event, name="del-event"),
+     path('del_venue/<venue_id>', views.del_venue, name="del-venue"),
 ]
