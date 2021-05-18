@@ -4,14 +4,18 @@ from .models import Venue, Event
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+
 # Create a venue form
 class VenueForm(ModelForm):
     class Meta:
         model = Venue
-        fields = ('name', 'address', 'post_code', 'phone', 'web', 'email', 'ven_description', 'booking_rates', 'from_hour', 'to_hour', 'flour_size')
+        fields = (
+            'name', 'address', 'post_code', 'phone', 'web', 'email', 'ven_description', 'booking_rates', 'from_hour',
+            'to_hour', 'flour_size')
 
         labels = {
-            'name': '', 'address': '', 'post_code': '', 'phone': '', 'web': '', 'email': '', 'ven_description': '', 'booking_rates': 'Ranking', 'from_hour': '',
+            'name': '', 'address': '', 'post_code': '', 'phone': '', 'web': '', 'email': '', 'ven_description': '',
+            'booking_rates': 'Ranking', 'from_hour': '',
             'to_hour': '', 'flour_size': 'Area size (m^2)',
         }
         widgets = {
@@ -27,14 +31,18 @@ class VenueForm(ModelForm):
             'to_hour': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Close time'}),
             'flour_size': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Square size (m^2)'})}
 
+
 # Create a event form
 class EventForm(ModelForm):
     class Meta:
         model = Event
-        fields = ('name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'eve_description', 'venue', 'attendees')
+        fields = (
+            'name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'eve_description', 'venue',
+            'attendees')
 
         labels = {
-            'name': '', 'event_date': '', 'start_time': '', 'end_time': '', 'manager': '', 'man_phone': '', 'eve_description': '', 'venue': '', 'attendees': '',
+            'name': '', 'event_date': '', 'start_time': '', 'end_time': '', 'manager': '', 'man_phone': '',
+            'eve_description': '', 'venue': '', 'attendees': '',
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event name'}),
@@ -47,6 +55,7 @@ class EventForm(ModelForm):
             'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
             'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
         }
+
 
 class CreateUser(UserCreationForm):
     class Meta:

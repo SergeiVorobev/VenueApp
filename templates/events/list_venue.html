@@ -1,0 +1,31 @@
+{% extends 'events/base_venues.html' %}
+{% load static %}
+
+{% block content %}
+<body id="bg" style="background-image: url('{% static "images/bg3.jpeg"%}');">
+
+    <div class="center">
+        <h1 class="opaqueWhite" style="text-align: center">Venues</h1>
+    </div>
+            <br/>
+        <form class="form-inline my-2 my-lg-0" method= POST action="{% url 'search-venues' %}">
+            {% csrf_token %}
+
+          <input class="form-control mr-sm-2" type="search" placeholder="Venue" aria-label="Search" name="searched">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" style="background-color: darkgrey">Search</button>
+
+        </form>
+        <br/>
+        <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.3);">
+            {% for venue in venue_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'show-venue' venue.id %}" style="color: black">{{ venue }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br/>
+        <a href="{%  url 'add-venue' %}" class="btn btn-primary">ADD VENUE</a>
+</body>
+{% endblock %}

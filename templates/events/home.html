@@ -2,22 +2,37 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
-<div style="text-align: center;">
-    <h1> Hello friend!</h1>
+<div class="center">
+    <h1 class="opaqueWhite"> Venue Shine</h1>
     <br/> <br/>
 <h2>Find or create a new events whenever and wherever you want.</h2>
     <br/><br/><br/>
 
 </div>
+
+<div class="center">
     <h2> Calendar for {{ month }} {{ year }}</h2>
     <br/>
+</div>
+
+    <br/><br/>
+
 {#    <h1>Hello {{ name }}! Events For#}
 {#    {{ month }} {{ year }} </h1>#}
-<div style="text-align: center;">
-    {{ cal|safe }}
+
+<div class="center">
+    <div class="opaqueWhite">
+        {{ cal|safe }}
+    </div>
+</div>
+
     <br/><br/><br/>
+
+<div class="center">
+    <p>
     Current time: {{ time }} <br/><br/><br/>
 
     Copyright (c) {{ current_year }}
+    </p>
 </div>
 {% endblock %}

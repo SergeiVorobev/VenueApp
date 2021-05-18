@@ -19,12 +19,17 @@
                     <li>Ranking: {{ venue.booking_rates}}</li>
                  </ul>
           </div>
+
+              <h5 class="card-title">Images</h5>
+            <div>
+                No Images to show yet
+          </div>
         </div>
      </div>
     <br/>    <br/>
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group mr-2" role="group" aria-label="First group">
-         <a href="{%  url 'list-venues' %}" class="btn btn-secondary" >COME BACK</a>
+         <a href="{%  url 'list-venues' %}" class="btn btn-secondary" >BACK</a>
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Second group">
         <a href="{%  url 'edit-venue' venue.id %}" class="btn btn-primary">EDIT VENUE</a>

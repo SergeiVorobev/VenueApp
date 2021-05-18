@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Venue(models.Model):
     name = models.CharField('Venue Name', max_length=255)
@@ -14,9 +15,11 @@ class Venue(models.Model):
     from_hour = models.TimeField(blank=True)
     to_hour = models.TimeField(blank=True)
     flour_size = models.FloatField(verbose_name='Square (mxm)', default=1.0, blank=True)
+
     # type = models.CharField('Type of Venue', max_length=255)
     def __str__(self):
         return self.name
+
 
 class EventUser(models.Model):
     f_name = models.CharField('First Name', max_length=50)
@@ -26,6 +29,7 @@ class EventUser(models.Model):
 
     def __str__(self):
         return self.f_name + ' ' + self.l_name
+
 
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=100)
@@ -40,4 +44,3 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
-
