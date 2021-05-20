@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns =[
      path('register/', views.registration, name="registration"),
-     path('login', views.login, name="login"),
+     path('login/', views.loginPage, name="login"),
+     path('logout/', views.logoutUser, name="logout"),
      path('', views.home, name="home"),
      path('<int:year>/<str:month>/', views.home, name="home"),
      path('events/', views.all_events, name="list-events"),
