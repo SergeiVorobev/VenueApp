@@ -5,18 +5,21 @@
 <h1>
     Edit Event
 </h1>
-<br/>
+<br/><br/>
+<div>
+
+</div>
     <form action="" method=POST>
     {% csrf_token %}
-      {{ form.as_p }}
+        {{ form.as_table }}
 
-        <br/>
+        <br/><br/>
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="First group">
-         <a href="{%  url 'list-events' %}" class="btn btn-primary">Come back</a>
+         <a href="{%  url 'list-events' %}" class="btn btn-secondary">BACK</a>
           </div>
           <div class="btn-group mr-2" role="group" aria-label="Second group">
-           <input type="submit" value="  Update  " class="btn btn-btn-primary" >
+           <input type="submit" value="  Update  " class="btn btn-primary" >
           </div>
         </div>
 

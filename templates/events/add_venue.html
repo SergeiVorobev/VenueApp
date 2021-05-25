@@ -2,6 +2,7 @@
 
 {% block content %}
 <div style="text-align: center;">
+<br><br>
 <h1>
     Add Venue
 </h1>
@@ -15,11 +16,11 @@
         <form action="" method=POST>
             {% csrf_token %}
               {{ form.as_p }}
-            <input type="submit" value="Submit" class="btn btn-secondary">
-             <a href="{%  url 'list-venues' %}" class="btn btn-primary">Come back</a>
+            <br><br>
+            <a href="{%  url 'list-venues' %}" class="btn btn-secondary">COME BACK</a>
+            <input type="submit" value="SUBMIT" class="btn btn-primary">
 
         </form>
     {% endif %}
-</div>
 
 {% endblock %}

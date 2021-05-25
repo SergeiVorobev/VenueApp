@@ -1,6 +1,7 @@
 {% extends 'events/base_events.html' %}
 
 {% block content %}
+    <br/><br/>
 
 <div class="center">
         <h1 class="opaqueWhite" style="text-align: center">Events</h1>
@@ -24,7 +25,15 @@
         {% endfor %}
     </table>
     <br/>
-    <a href="{%  url 'add-event' %}" class="btn btn-secondary">ADD EVENT</a>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+         <a href="{%  url 'home' %}" class="btn btn-secondary" >BACK</a>
+      </div>
+      <div class="btn-group mr-2" role="group" aria-label="Second group">
+        <a href="{%  url 'add-event' %}" class="btn btn-primary">ADD EVENT</a>
+      </div>
+
+    </div>
 
 
 {% endblock %}

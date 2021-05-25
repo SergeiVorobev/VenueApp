@@ -10,13 +10,13 @@ class VenueForm(ModelForm):
     class Meta:
         model = Venue
         fields = (
-            'name', 'address', 'post_code', 'phone', 'web', 'email', 'ven_description', 'booking_rates', 'from_hour',
-            'to_hour', 'flour_size')
+            'name', 'address', 'post_code', 'phone', 'web', 'email', 'booking_rates', 'from_hour',
+            'to_hour', 'flour_size', 'ven_description')
 
         labels = {
-            'name': '', 'address': '', 'post_code': '', 'phone': '', 'web': '', 'email': '', 'ven_description': '',
-            'booking_rates': 'Ranking', 'from_hour': '',
-            'to_hour': '', 'flour_size': 'Area size (m^2)',
+            'name': 'Name', 'address': 'Address', 'post_code': 'Post Code', 'phone': 'Phone number', 'web': 'WebSite', 'email': 'Email', 'ven_description': 'Description',
+            'booking_rates': 'Ranking', 'from_hour': 'Open Time',
+            'to_hour': 'Close Time', 'flour_size': 'Area size (m^2)',
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Venue name'}),
@@ -31,18 +31,17 @@ class VenueForm(ModelForm):
             'to_hour': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Close time'}),
             'flour_size': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Square size (m^2)'})}
 
-
-# Create a event form
+   # Create a event form
 class EventForm(ModelForm):
     class Meta:
         model = Event
         fields = (
-            'name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'eve_description', 'venue',
-            'attendees')
+            'name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'venue',
+            'attendees','eve_description')
 
         labels = {
-            'name': '', 'event_date': '', 'start_time': '', 'end_time': '', 'manager': '', 'man_phone': '',
-            'eve_description': '', 'venue': '', 'attendees': '',
+            'name': 'Name', 'event_date': 'Date', 'start_time': 'Start Time', 'end_time': 'End Time', 'manager': 'Manager', 'man_phone': 'Contact Phone',
+            'eve_description': 'Description', 'venue': 'Venue', 'attendees': 'Attendees',
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Event name'}),
@@ -55,6 +54,40 @@ class EventForm(ModelForm):
             'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
             'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
         }
+
+    # Create a event form for Add event Page
+    class EventForm2(ModelForm):
+        class Meta:
+            model = Event
+            fields = (
+                'name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'venue',
+                'attendees', 'eve_description')
+
+            labels = {
+                'name': '', 'event_date': '', 'start_time': '', 'end_time': '',
+                'manager': '', 'man_phone': '',
+                'eve_description': '', 'venue': '', 'attendees': '',
+            }
+            widgets = {
+                'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
+                'venue': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Venue'}),
+                'event_date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
+                'start_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Start time'}),
+                'end_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'End time'}),
+                'manager': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Manager'}),
+                'man_phone': forms.TextInput(attrs={'class': 'form-control', ' placeholder': 'Manager phone'}),
+                'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
+                'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
+            }
+
+    # def as_p(self):
+    #     "Returns this form rendered as HTML <p>s."
+    #     return self._html_output(
+    #         normal_row = u'<p%(html_class_attr)s>%(label)s</p> %(field)s%(help_text)s',
+    #         error_row = u'%s',
+    #         row_ender = '</p>',
+    #         help_text_html = u' <span class="helptext">%s</span>',
+    #         errors_on_separate_row = True)
 
 
 class CreateUser(UserCreationForm):

@@ -3,6 +3,7 @@
 
 {% block content %}
 <body id="bg" style="background-image: url('{% static "images/bg3.jpeg"%}');">
+    <br/><br/>
 
     <div class="center">
         <h1 class="opaqueWhite" style="text-align: center">Venues</h1>
@@ -26,6 +27,14 @@
             {% endfor %}
         </table>
         <br/>
-        <a href="{%  url 'add-venue' %}" class="btn btn-primary">ADD VENUE</a>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2" role="group" aria-label="First group">
+             <a href="{%  url 'home' %}" class="btn btn-secondary" >BACK</a>
+          </div>
+          <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <a href="{%  url 'add-venue' %}" class="btn btn-primary">ADD VENUE</a>
+          </div>
+        </div>
+
 </body>
 {% endblock %}
