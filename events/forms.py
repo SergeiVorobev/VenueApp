@@ -55,30 +55,6 @@ class EventForm(ModelForm):
             'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
         }
 
-    # Create a event form for Add event Page
-    class EventForm2(ModelForm):
-        class Meta:
-            model = Event
-            fields = (
-                'name', 'event_date', 'start_time', 'end_time', 'manager', 'man_phone', 'venue',
-                'attendees', 'eve_description')
-
-            labels = {
-                'name': '', 'event_date': '', 'start_time': '', 'end_time': '',
-                'manager': '', 'man_phone': '',
-                'eve_description': '', 'venue': '', 'attendees': '',
-            }
-            widgets = {
-                'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
-                'venue': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Venue'}),
-                'event_date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date'}),
-                'start_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'Start time'}),
-                'end_time': forms.TimeInput(attrs={'class': 'form-control', 'placeholder': 'End time'}),
-                'manager': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Manager'}),
-                'man_phone': forms.TextInput(attrs={'class': 'form-control', ' placeholder': 'Manager phone'}),
-                'eve_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
-                'attendees': forms.SelectMultiple(attrs={'class': 'form-control', 'placeholder': 'Atendees'}),
-            }
 
     # def as_p(self):
     #     "Returns this form rendered as HTML <p>s."

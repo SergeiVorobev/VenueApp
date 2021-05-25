@@ -83,7 +83,7 @@ def add_venue(request):
 def add_event(request):
     submitted = False
     if request.method == "POST":
-        form = EventForm2(request.POST)
+        form = EventForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/events/add_event?submitted=True')
