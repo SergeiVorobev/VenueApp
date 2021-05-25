@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Venue, Event
+from .models import Venue, Event, EventUser
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
