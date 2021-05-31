@@ -19,4 +19,6 @@ urlpatterns =[
      path('edit_venue/<venue_id>', views.edit_venue, name="edit-venue"),
      path('del_event/<event_id>', views.del_event, name="del-event"),
      path('del_venue/<venue_id>', views.del_venue, name="del-venue"),
+     path('venue_to_text', views.venue_to_text, name="text-venue"),
+
 ]

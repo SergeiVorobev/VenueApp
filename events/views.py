@@ -183,3 +183,20 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def venue_to_text(request):
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename=venues.txt'
+
+    # Designate the Model
+    venues =  Venue.objects.all()
+    lines = []
+    for venue in venues:
+        lines.append(f'Name: {venue.name}\nAddress:{venue.address}\nPost Code: {venue.post_code}\nContact phone: {venue.phone}\nWebSite: {venue.web}\nEmail: {venue.email}\nDescription: {venue.ven_description}\nRating: {venue.booking_rates}\nOpen hours: {venue.from_hour} - {venue.to_hour}\nSquare(m^2):{venue.flour_size}\n\n')
+
+    # Write to text file
+    response.writelines(lines)
+    return response
+
+
