@@ -9,13 +9,14 @@
 <br/>
     {% if submitted %}
          Your event was submitted successfully!
+        <br/>
         <div>
             <a href="{%  url 'list-events' %}" class="btn btn-primary"> SEE EVENTS</a>
         </div>
     {% else %}
         <form action="" method=POST>
             {% csrf_token %}
-              {{ form.as_p }}
+            {{ form.as_p }}
 
             <br><br>
             <a href="{%  url 'list-events' %}" class="btn btn-secondary">COME BACK</a>

@@ -67,6 +67,7 @@ def show_event(request, event_id):
 @login_required(login_url='login')
 def add_venue(request):
     submitted = False
+
     if request.method == "POST":
         form = VenueForm(request.POST)
         if form.is_valid():
@@ -77,11 +78,12 @@ def add_venue(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    return render(request, 'events/add_venue.html', {'form': form, 'submitted': submitted})
+    return render(request, 'events/add_venue.html', {'form': form, 'submitted': submitted, })
 
 @login_required(login_url='login')
 def add_event(request):
     submitted = False
+
     if request.method == "POST":
         form = EventForm(request.POST)
         if form.is_valid():
@@ -193,7 +195,7 @@ def venue_to_text(request):
     venues =  Venue.objects.all()
     lines = []
     for venue in venues:
-        lines.append(f'Name: {venue.name}\nAddress:{venue.address}\nPost Code: {venue.post_code}\nContact phone: {venue.phone}\nWebSite: {venue.web}\nEmail: {venue.email}\nDescription: {venue.ven_description}\nRating: {venue.booking_rates}\nOpen hours: {venue.from_hour} - {venue.to_hour}\nSquare(m^2):{venue.flour_size}\n\n')
+        lines.append(f'Name: {venue.name}\nAddress: {venue.address}\nPost Code: {venue.post_code}\nContact phone: {venue.phone}\nWebSite: {venue.web}\nEmail: {venue.email}\nDescription: {venue.ven_description}\nRating: {venue.booking_rates}\nOpen hours: {venue.from_hour} - {venue.to_hour}\nSquare(m^2): {venue.flour_size}\n\n')
 
     # Write to text file
     response.writelines(lines)

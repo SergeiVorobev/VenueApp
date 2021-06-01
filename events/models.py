@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import datetime
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class Venue(models.Model):
@@ -33,7 +34,7 @@ class EventUser(models.Model):
 
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=100)
-    event_date = models.DateField('Event Date')
+    event_date = models.DateField('Event Date', default=datetime.date.today())
     start_time = models.TimeField()
     end_time = models.TimeField()
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
@@ -41,6 +42,11 @@ class Event(models.Model):
     eve_description = models.TextField('Description', blank=True)
     venue = models.ForeignKey(Venue, blank=True, null=True, on_delete=models.CASCADE)
     attendees = models.ManyToManyField(EventUser, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.event_date < datetime.date.today():
+            raise ValidationError("The date cannot be in the past!")
+        super(Event, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
