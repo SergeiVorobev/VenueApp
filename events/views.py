@@ -101,18 +101,18 @@ def search_venues(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         venues = Venue.objects.filter(name__contains=searched)
-        return render(request, 'events/search_venues.html', {'searched': searched, 'venues': venues})
+        return render(request, 'events/venue_search.html', {'searched': searched, 'venues': venues})
     else:
-        return render(request, 'events/search_venues.html', {})
+        return render(request, 'events/venue_search.html', {})
 
 @login_required(login_url='login')
 def search_events(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         events = Event.objects.filter(name__contains=searched)
-        return render(request, 'events/search_events.html', {'searched': searched, 'events': events})
+        return render(request, 'events/event_search.html', {'searched': searched, 'events': events})
     else:
-        return render(request, 'events/search_events.html', {})
+        return render(request, 'events/event_search.html', {})
 
 @login_required(login_url='login')
 def edit_venue(request, venue_id):
