@@ -195,10 +195,28 @@ def venue_to_text(request):
     venues =  Venue.objects.all()
     lines = []
     for venue in venues:
-        lines.append(f'Name: {venue.name}\nAddress: {venue.address}\nPost Code: {venue.post_code}\nContact phone: {venue.phone}\nWebSite: {venue.web}\nEmail: {venue.email}\nDescription: {venue.ven_description}\nRating: {venue.booking_rates}\nOpen hours: {venue.from_hour} - {venue.to_hour}\nSquare(m^2): {venue.flour_size}\n\n')
+        lines.append(f'Name: {venue.name}\nAddress: {venue.address}\nPost Code: {venue.post_code}\nContact phone: {venue.phone}\n'
+                     f'WebSite: {venue.web}\nEmail: {venue.email}\nDescription: {venue.ven_description}\nRating: {venue.booking_rates}\n'
+                     f'Open hours: {venue.from_hour} - {venue.to_hour}\nSquare(m^2): {venue.flour_size}\n\n')
 
     # Write to text file
     response.writelines(lines)
     return response
 
+@login_required(login_url='login')
+def events_to_text(request):
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename=events.txt'
+
+    # Designate the Model
+    events =  Event.objects.all()
+    lines = []
+    for event in events:
+        lines.append(f'Name: {event.name}\nDate: {event.event_date}\nStart Time: {event.start_time}\nEnd Time: {event.end_time}\n'
+                     f'Manager: {event.manager}\nContact Phone: {event.man_phone}\nDescription: {event.eve_description}\n'
+                     f'Venue: {event.venue}\nAtendees: {event.attendees}\n\n')
+
+    # Write to text file
+    response.writelines(lines)
+    return response
 
