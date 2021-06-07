@@ -38,7 +38,7 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
 
 @login_required(login_url='login')
 def all_events(request):
-    event_list = Event.objects.all()
+    event_list = Event.objects.all().order_by('event_date')
     return render(request, 'events/list_event.html', {
                       "event_list": event_list,
                   })
@@ -48,6 +48,7 @@ def all_venues(request):
     venues_list = Venue.objects.all()
     return render(request, 'events/list_venue.html', {
                       "venue_list": venues_list,
+
                   })
 
 @login_required(login_url='login')

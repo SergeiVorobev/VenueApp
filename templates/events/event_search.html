@@ -2,12 +2,15 @@
 {% extends 'events/base.html' %}
 
 {% block content %}
+    <br/><br/><br/>
 <div style="text-align: center;">
     {% if searched %}
-         <h1>You Searched for '{{ searched }}' </h1>
+         <h3>You Searched for '{{ searched }}' </h3>
         <br/>
+        <p style="font-size: 24px"> Result:</p>
         {% for event in events %}
-            <a href="{% url 'show-event' event.id %}">{{ event }}</a> <br/>
+            <p style="font-size: 24px"><a href="{% url 'show-event' event.id %}" >{{ event }}</a> event.</p>
+            <br/>
         {% endfor %}
 
     {% else %}

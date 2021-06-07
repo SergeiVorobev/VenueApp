@@ -15,11 +15,14 @@
 
     </form>
     <br/>
-    <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8);">
+    <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); width: 1000px">
         {% for event in event_list %}
             <tr>
                 <td>
-                    <a href="{% url 'show-event' event.id %}" style="color: black; font-size:22px">{{ event }}</a>
+                    <a href="{% url 'show-event' event.id %}" style="color: black; font-size:22px"> {{ event }} </a>
+                </td>
+                <td style="font-size: 20px; width: 30%;">
+                    on {{ event.event_date }}
                 </td>
             </tr>
         {% endfor %}

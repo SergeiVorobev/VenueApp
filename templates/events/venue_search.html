@@ -3,11 +3,13 @@
 
 {% block content %}
 <div style="text-align: center;">
+    <br/><br/><br/>
     {% if searched %}
-         <h1>You Searched for '{{ searched }}' </h1>
+         <h3>You Searched for '{{ searched }}' </h3>
         <br/>
+        <p style="font-size: 24px"> Result:</p>
         {% for venue in venues %}
-            <a href="{% url 'show-venue' venue.id %}">{{ venue }}</a> <br/>
+            <p style="font-size: 24px"><a href="{% url 'show-venue' venue.id %}">{{ venue }}</a> </p><br/>
         {% endfor %}
 
     {% else %}
