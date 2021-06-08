@@ -41,7 +41,7 @@ def all_events(request):
     event_list = Event.objects.all().order_by('event_date')
     return render(request, 'events/list_event.html', {
                       "event_list": event_list,
-                  })
+                     })
 
 @login_required(login_url='login')
 def all_venues(request):

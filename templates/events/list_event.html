@@ -18,12 +18,24 @@
     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); width: 1000px">
         {% for event in event_list %}
             <tr>
-                <td>
-                    <a href="{% url 'show-event' event.id %}" style="color: black; font-size:22px"> {{ event }} </a>
-                </td>
-                <td style="font-size: 20px; width: 30%;">
-                    on {{ event.event_date }}
-                </td>
+                {% if event.is_past_due %}
+                    <td>
+                        <p style="color: orange; font-size:22px"><a href="{% url 'show-event' event.id %}" style="color: orange; font-size:22px"> {{ event }} </a> (in the past)  </p>
+                    </td>
+                    <td style="font-size: 20px; width: 30%;color: orange;">
+                          on {{ event.event_date }}
+                     </td>
+
+                {% else %}
+                    <tr height = 5px></tr>
+                    <td>
+                        <a href="{% url 'show-event' event.id %}" style="color: black; font-size:22px"> {{ event }} </a>
+                    </td>
+                    <td style="font-size: 20px; width: 30%;">
+                          on {{ event.event_date }}
+                     </td>
+                {% endif %}
+
             </tr>
         {% endfor %}
     </table>
