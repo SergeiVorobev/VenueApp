@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 from datetime import date
-
+from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 # Create your models here.
@@ -36,7 +36,7 @@ class EventUser(models.Model):
 
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=100)
-    event_date = models.DateField('Event Date', default=datetime.date.today())
+    event_date = models.DateField('Event Date', default=timezone.now)
     start_time = models.TimeField()
     end_time = models.TimeField()
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
