@@ -1,1 +1,1 @@
-web: gunicorn VenueApp.wsgi.py
+web: gunicorn VenueApp.wsgi
